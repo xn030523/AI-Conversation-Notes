@@ -1,0 +1,19 @@
+[Unit]
+Description=RustFS Conversation MCP
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=ubuntu
+Group=ubuntu
+WorkingDirectory=/home/ubuntu/rustfs-conversation-mcp
+ExecStart=/home/ubuntu/.local/node22/node_modules/node/bin/node /home/ubuntu/rustfs-conversation-mcp/dist/cli.js serve
+Restart=always
+RestartSec=3
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
